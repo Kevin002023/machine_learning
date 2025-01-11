@@ -28,6 +28,7 @@ The following Python packages were used in the project:
 - **[openai](https://platform.openai.com/docs/)**: To query the LLM for sentiment and insight extraction.
 - **[requests](https://docs.python-requests.org/en/latest/)**: For making HTTP requests.
 - **[assemblyai](https://www.assemblyai.com/)**: For speaker diarization and speech-to-text analysis.
+- **[pyannote.audio](https://github.com/pyannote/pyannote-audio/blob/develop/README.md**)
 
 ## Setup Instructions
 
@@ -41,6 +42,16 @@ The following Python packages were used in the project:
    Install the dependencies listed above using `pip`:
    ```bash
    pip install whisper pandas matplotlib pydub openai requests assemblyai
+   ```
+
+3. **Installation of WhisperX**
+   Using [Chocolatey](https://chocolatey.org/) for Windows or [Homebrew](https://brew.sh/)
+   ```bash
+   choco install ffmpeg
+   ```
+
+   ```bash
+   brew install ffmpeg
    ```
 
 3. **Set Up API Keys**:
