@@ -12,23 +12,32 @@ This project leverages advanced speech-to-text models and natural language proce
 2. **Speech-to-Text Analysis**:
    - Created a detailed transcript of the audio, segmented by speaker and time.
 
-3. **Sentiment and Insights Extraction**:
-   - Fed the transcript into a large language model (LLM) to perform sentiment analysis and extract key insights from the discussion.
+3. **Large Language Model (LLM) Analysis**
+- Queries the transcript to extract insights such as:
+  - Sentiment analysis.
+  - Identification of speaker names.
+  - Association of speakers with specific ideological perspectives.
 
-## Packages and Libraries Used
+4. **Testing AssemblyAI with a second audio file**
+- Additional testing with more complex scenarios audio file(e.g., laughtrack, backing music, accents etc).
 
-The following Python packages were used in the project:
+## Libraries Used
+The project utilizes the following Python libraries:
 
-- **[whisper](https://github.com/openai/whisper)**: For speech-to-text transcription.
-- **[os](https://docs.python.org/3/library/os.html)**: To manage file paths and environment variables.
-- **[csv](https://docs.python.org/3/library/csv.html)**: For handling CSV files.
-- **[pandas](https://pandas.pydata.org/)**: For data manipulation and analysis.
-- **[matplotlib.pyplot](https://matplotlib.org/stable/tutorials/introductory/pyplot.html)**: For creating visualizations of the data.
-- **[pydub](https://pydub.com/)**: For processing and manipulating audio files.
-- **[openai](https://platform.openai.com/docs/)**: To query the LLM for sentiment and insight extraction.
-- **[requests](https://docs.python-requests.org/en/latest/)**: For making HTTP requests.
-- **[assemblyai](https://www.assemblyai.com/)**: For speaker diarization and speech-to-text analysis.
-- **[pyannote.audio](https://github.com/pyannote/pyannote-audio/blob/develop/README.md**)
+- [**whisper**](https://github.com/openai/whisper): For speech-to-text transcription.
+- [**os**](https://docs.python.org/3/library/os.html): For file and directory handling.
+- [**csv**](https://docs.python.org/3/library/csv.html): To read and write CSV files.
+- [**pandas**](https://pandas.pydata.org/): For data manipulation and analysis.
+- [**matplotlib**](https://matplotlib.org/): For creating visualizations.
+- [**pydub**](https://github.com/jiaaro/pydub): For audio file manipulation.
+- [**openai**](https://pypi.org/project/openai/): For integrating with OpenAI's API.
+- [**requests**](https://docs.python-requests.org/): For making HTTP requests to APIs.
+- [**assemblyai**](https://www.assemblyai.com/): For advanced audio processing.
+- [**pyannote.audio**](https://github.com/pyannote/pyannote-audio): For speaker diarisation.
+- [**Authtoken**](https://example.com): For securely storing API tokens (custom module).
+- [**collections**](https://docs.python.org/3/library/collections.html): For handling specialized container datatypes like `defaultdict`.
+- [**numpy**](https://numpy.org/): For numerical operations and array handling.
+
 
 ## Setup Instructions
 
@@ -41,11 +50,11 @@ The following Python packages were used in the project:
 2. **Install Required Packages**:
    Install the dependencies listed above using `pip`:
    ```bash
-   pip install whisper pandas matplotlib pydub openai requests assemblyai
+   pip install whisper pandas matplotlib pydub openai requests assemblyai pyannote.audio numpy
    ```
 
 3. **Installation of WhisperX**
-   Using [Chocolatey](https://chocolatey.org/) for Windows or [Homebrew](https://brew.sh/)
+   Using [Chocolatey](https://chocolatey.org/) for Windows or [Homebrew](https://brew.sh/) for linux/mac
    ```bash
    choco install ffmpeg
    ```
@@ -68,39 +77,37 @@ The following Python packages were used in the project:
    python main.py
    ```
 
-## Workflow Details
 
-### 1. Speaker Diarization
-- Used **AssemblyAI** to identify when each speaker started and stopped talking.
-- Results were saved as a CSV file, containing speaker labels and timestamps.
+## API Keys
+Some components require API keys:
+- **AssemblyAI API Key**: For advanced audio processing.
+- **Pyannote Pipeline Token**: For speaker diarisation.
 
-### 2. Speech-to-Text Transcription
-- Leveraged **Whisper** and **AssemblyAI** models to convert speech into text.
-- Combined the diarization output to produce a transcript segmented by speaker.
+Add these keys in an `Authtoken.py` file or as environment variables to ensure secure usage.
 
-### 3. Sentiment and Insights Analysis
-- Fed the segmented transcript into the **OpenAI API** to:
-  - Perform sentiment analysis for each speaker’s statements.
-  - Extract key topics and insights discussed during the debate.
+---
 
-### 4. Visualization
-- Created visualizations with **Matplotlib** to represent speaker activity and sentiment trends over time.
+## Project Structure
+```
+project-directory/
+|-- project.ipynb   # Main analysis notebook
+|-- data/
+|   |-- raw/              # Directory for input audio files
+|   |-- processed/        # Directory for processed data
+|-- model.cache/          # Pipeline stored here to expediate running of notebook
+|-- README.md             # Project documentation
+```
 
-## Outputs
 
-1. **Speaker Diarization File**:
-   - CSV file containing speaker labels and timestamps.
-2. **Transcript File**:
-   - Text file with the transcript segmented by speaker.
-3. **Sentiment Report**:
-   - Detailed sentiment analysis report for each speaker.
-4. **Visualizations**:
-   - Graphs and charts representing speaker activity and sentiment trends.
+---
 
-## Future Enhancements
-- Integrate additional natural language processing models to detect bias or rhetorical strategies.
-- Expand the analysis to include real-time processing for live debates.
-- Enhance visualizations with interactive dashboards.
+## Acknowledgments
+- [**OpenAI Whisper**](https://github.com/openai/whisper): For transcription.
+- [**AssemblyAI**](https://www.assemblyai.com/): For audio analysis.
+- [**Pyannote**](https://github.com/pyannote/pyannote-audio): For speaker diarisation.
+- [**Matplotlib**](https://matplotlib.org/): For visualization.
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+---
+
+## Author
+[Kevin O'Leary]
